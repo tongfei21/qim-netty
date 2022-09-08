@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>  <!--XML申明，每一个XML文件都需要-->
+<!--MyBatis DTD文档约束-->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 外部 properties 配置文件  -->
+    <properties resource="db.properties"/>
+
+    <!--配置数据源-->
+    <environments default="development-mysql">
+        <environment id="development-mysql">
+            <transactionManager type="JDBC"/>
+            <dataSource type="qim.netty.server.config.DruidDataSourceFactory">
+                <property name="url" value="${jdbc.jdbcUrl}"/>
+                <property name="username" value="${jdbc.user}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- mappers：将 SQL 映射文件注册到全局配置中 -->
+    <mappers>
+        <!-- 引用类路径下的 SQL 映射文件 -->
+        <mapper resource="mapper/WtsUserMapper.xml"/>
+    </mappers>
+</configuration>

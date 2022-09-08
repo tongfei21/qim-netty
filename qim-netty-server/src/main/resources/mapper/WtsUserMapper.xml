@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="qim.netty.server.mapper.WtsUserMapper">
+  <resultMap id="BaseResultMap" type="qim.netty.server.model.WtsUser">
+    <!--@mbg.generated-->
+    <!--@Table wts_user-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="head_img" jdbcType="VARCHAR" property="headImg" />
+    <result column="head_full_img" jdbcType="VARCHAR" property="headFullImg" />
+    <result column="sex" jdbcType="BOOLEAN" property="sex" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="brief" jdbcType="VARCHAR" property="brief" />
+    <result column="type" jdbcType="BOOLEAN" property="type" />
+    <result column="status" jdbcType="BOOLEAN" property="status" />
+    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, username, `password`, nickname, head_img, head_full_img, sex, birthday, brief, 
+    `type`, `status`, addtime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from wts_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from wts_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="qim.netty.server.model.WtsUser" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into wts_user (username, `password`, nickname, 
+      head_img, head_full_img, sex, 
+      birthday, brief, `type`, 
+      `status`, addtime)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{headImg,jdbcType=VARCHAR}, #{headFullImg,jdbcType=VARCHAR}, #{sex,jdbcType=BOOLEAN}, 
+      #{birthday,jdbcType=TIMESTAMP}, #{brief,jdbcType=VARCHAR}, #{type,jdbcType=BOOLEAN}, 
+      #{status,jdbcType=BOOLEAN}, #{addtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="qim.netty.server.model.WtsUser" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into wts_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="headImg != null">
+        head_img,
+      </if>
+      <if test="headFullImg != null">
+        head_full_img,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="brief != null">
+        brief,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="addtime != null">
+        addtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null">
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="headFullImg != null">
+        #{headFullImg,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BOOLEAN},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brief != null">
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BOOLEAN},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="qim.netty.server.model.WtsUser">
+    <!--@mbg.generated-->
+    update wts_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null">
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="headFullImg != null">
+        head_full_img = #{headFullImg,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=BOOLEAN},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brief != null">
+        brief = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=BOOLEAN},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="addtime != null">
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="qim.netty.server.model.WtsUser">
+    <!--@mbg.generated-->
+    update wts_user
+    set username = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR},
+      head_full_img = #{headFullImg,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BOOLEAN},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      brief = #{brief,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=BOOLEAN},
+      `status` = #{status,jdbcType=BOOLEAN},
+      addtime = #{addtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectBynameandPwd" parameterType="qim.netty.server.model.WtsUser" resultType="qim.netty.server.model.WtsUser">
+    select
+    <include refid="Base_Column_List" />
+    from wts_user
+    where username = #{username,jdbcType=VARCHAR} AND password = #{password,jdbcType=VARCHAR} AND type=  #{type,jdbcType=INTEGER}
+  </select>
+</mapper>
